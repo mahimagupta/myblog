@@ -10,18 +10,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          submodules: recursive # For theme submodules
+          submodules: recursive
+      - name: Fetch submodules
+        run: git submodule update --init --recursive
+      - name: List repository contents
+        run: ls -la
+      - name: Check theme directory
+        run: ls -la themes || echo "themes directory not found"
+      - name: Check content directory
+        run: ls -la content || echo "content directory not found"
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.147.0' # Replace with your Hugo version
-          extended: true # Set to true if using extended Hugo
+          hugo-version: '0.147.0'
+          extended: true
+      - name: Check Hugo version
+        run: hugo version
       - name: Build Hugo site
-        run: hugo --minify -D # Remove -D for production if drafts not needed
+        run: hugo --minify -D --verbose
+      - name: List public folder contents
+        run: ls -la public || echo "public folder not found"
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          publish_branch: gh-pages # Explicitly set to gh-pages
-          cname: mahima.blog # Replace with your GoDaddy domain
+          publish_branch: gh-pages
+          cname: mahima.blog
