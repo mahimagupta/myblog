@@ -9,16 +9,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          submodules: recursive # For theme submodules
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.147.0'
-          extended: true # Set to true if using Hugo extended version
+          hugo-version: '0.147.0' # Replace with your Hugo version
+          extended: true # Set to true if using extended Hugo
       - name: Build Hugo site
-        run: hugo --minify
+        run: hugo --minify -D # Remove -D for production if drafts not needed
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          cname: mahima.blog
+          publish_branch: gh-pages # Explicitly set to gh-pages
+          cname: mahima.blog # Replace with your GoDaddy domain
