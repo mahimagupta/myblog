@@ -1,0 +1,19 @@
+# Hugo build output
+.hugo_build.lock
+public/
+resources/_gen/
+
+# macOS system files
+.DS_Store
+
+# Editor and IDE files
+.vscode/
+*.code-workspace
+
+# Dependency directories (if using Node.js or other package managers)
+node_modules/
+
+# Local environment files
+.env
+
+

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3e7e127d3f181358",
+        "id": "b3ea9eaad6cca22a",
         "type": "tabs",
         "children": [
           {
-            "id": "37b8dc654f895a8a",
+            "id": "40fc20f963bfe5ba",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -168,7 +168,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "37b8dc654f895a8a",
+  "active": "40fc20f963bfe5ba",
   "lastOpenFiles": [
     "My First Blog.md"
   ]
